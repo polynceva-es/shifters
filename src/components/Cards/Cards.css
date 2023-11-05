@@ -1,0 +1,13 @@
+.cards {
+    padding: 10px;
+    width: 80vw;
+    background-color: darkgray;
+    border-radius: 2%;
+}
+
+.cards-list {
+    display: grid;
+    gap: 10px;
+    /* grid-template-columns: repeat(3, minmax(min-content, max-content)); */
+    grid-template-columns: repeat(auto-fit, 150px);
+}
