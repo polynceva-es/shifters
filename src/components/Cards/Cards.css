@@ -10,4 +10,5 @@
     gap: 10px;
     /* grid-template-columns: repeat(3, minmax(min-content, max-content)); */
     grid-template-columns: repeat(auto-fit, 150px);
+    justify-content: center;
 }
