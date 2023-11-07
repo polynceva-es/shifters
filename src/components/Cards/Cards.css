@@ -3,6 +3,7 @@
     width: 80vw;
     background-color: darkgray;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .cards-list {

@@ -1,28 +1,17 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import "./App.css";
 import { Cards } from "./components/Cards/Cards";
+import { Popup } from './components/Popup/Popup';
 
 function App() {
-  // const [count, setCount] = useState(0)
-
-  function getHiddenCard(text?: string, count: number = 4): string {
-    return "*".repeat(count) + (text ? text.slice(-4) : "");
-  }
+  const [isImageOnCard, setIsImageOnCard] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
 
   return (
     <>
       <h1 id="title">Shifters</h1>
-      {/* <h1 id='title2'>0</h1> */}
-      {/* <p>count is {count}</p>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-        count +1  
-        </button>
-        <button onClick={() => setCount((count) => count - 1)}>
-        count -1  
-        </button>
-      </div> */}
-      <Cards />
+      <Popup isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} setIsImageOnCard={setIsImageOnCard}/>
+      {!isPopupOpen ? <Cards isImageOnCard={isImageOnCard}/> : <></>}
     </>
   );
 }
