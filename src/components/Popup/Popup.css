@@ -1,0 +1,28 @@
+.popup {
+    display: none;
+    justify-content: center;
+    position: relative;
+    width: 80vw;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.popup_open {
+    display: flex;
+}
+
+.popup-btnClose {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: 1px solid black;
+    width: 10px;
+    height: 10px;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.popup-btnClose:hover {
+    opacity: 0.8;
+}
