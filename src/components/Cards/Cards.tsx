@@ -2,28 +2,51 @@ import "./Cards.css";
 import { Card } from "../Card/Card";
 import { array } from "../../const/array";
 type Card = {
-    url: string,
-    id: number
-}
+  url: string;
+  id: number;
+};
 export const Cards = () => {
-    function arrayRandElement(arr: Array<Card>) {
-        const rand = Math.floor(Math.random() * arr.length);
-        return arr[rand];
-    }
-const cardList: Array<Card> = [];
-const newArray: Array<Card> = array.concat(array);
 
-for(let i: number =0; i<= newArray.length; i++) {
-cardList.push(arrayRandElement(newArray))
-}
-console.log(cardList);
+  //элементы с 0 по N-1, где N - длина массива (arr.length) (N-1)т.к. нумерация элементов массива начинается с 0
+  //из всего количества элементов выбрать рандомный номер
+  //записать в промежуточную переменную последний элемент из всего количества элементов x = arr[N-1]
+  //записать в последний элемент элемент рандомного номера arr[N-1] = arr[randomNumber]
+  //записать в элемент рандомного номера последний элемент из промежуточной переменной arr[randomNumber] = x
+
+  //уменьшить количество элементов на 1 и выбрать рандомный номер
+  //записать в промежуточную переменную последний элемент из всего количества элементов x = arr[N-1-1]
+  //записать в последний элемент элемент рандомного номера arr[N-1-1] = arr[randomNumber]
+  //записать в элемент рандомного номера последний элемент из промежуточной переменной arr[randomNumber] = x
+  
+  //... и т.д. пока не кончатся элементы:
+
+  //уменьшить количество элементов на i и выбрать рандомный номер
+  //записать в промежуточную переменную последний элемент из всего количества элементов x = arr[N-1-i]
+  //записать в последний элемент элемент рандомного номера arr[N-1-i] = arr[randomNumber]
+  //записать в элемент рандомного номера последний элемент из промежуточной переменной arr[randomNumber] = x
+
+  function randomArraySorting(arr: Array<Card>) {
+    let x: Card;
+    for (let i: number = 0; i < arr.length; i++) {
+      const numberRandomElement: number = Math.floor(
+        Math.random() * (arr.length - i)
+      );
+      x = arr[arr.length - 1 - i];
+      arr[arr.length - 1 - i] = arr[numberRandomElement];
+      arr[numberRandomElement] = x;
+    }
+    return arr;
+  }
+
+   const cardList: Array<Card> = randomArraySorting(array.concat(array));
+
   return (
     <section className="cards">
       <ul className="cards-list">
         {cardList.map((elem, i) => {
           return (
             <li key={i}>
-              <Card url={elem.url} id={elem.id}/>
+              <Card url={elem.url} id={elem.id} />
             </li>
           );
         })}
