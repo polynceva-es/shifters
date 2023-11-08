@@ -1,11 +1,10 @@
-import { useState } from 'react'
 import "./App.css";
 import { Cards } from "./components/Cards/Cards";
 import { Popup } from './components/Popup/Popup';
 
-function App() {
-  const [isImageOnCard, setIsImageOnCard] = useState(false);
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
+const App: FC = () => {
+  const [isImageOnCard, setIsImageOnCard] = useState<boolean>(false);
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(true);
 
   return (
     <>

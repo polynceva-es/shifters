@@ -1,19 +1,24 @@
 import React from "react";
-import { useState } from "react";
-import { useForm, useFormState } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import "./Form.css";
 import "../Button/Button.css"
 import { Button } from "../Button/Button";
 
-export const Form: React.FC = (props) => {
-  const {isPopupOpen, setIsPopupOpen, setIsImageOnCard} = props;
-  const { register, handleSubmit, control } = useForm({ mode: 'onChange' });
-  const {isValid} = useFormState({control});
+type FormProps = {
+  setIsPopupOpen: (isPopupOpen: boolean)=> void;
+  setIsImageOnCard: (isImageOnCard: boolean) => void;
+}
 
-  const onSubmit = (data: object) => {
-    console.log(data);
+type FormValue = {
+  type: string
+}
+
+export const Form: React.FC<FormProps> = ({setIsPopupOpen, setIsImageOnCard}) => {
+  const { register, handleSubmit} = useForm<FormValue>({ mode: 'onChange' });
+
+  const onSubmit = (data: FormValue) => {
     if(data.type === 'image'){setIsImageOnCard(true)}
-    else {setIsImageOnCard(false)};
+    else {setIsImageOnCard(false)}
     setIsPopupOpen(false);
   };
 

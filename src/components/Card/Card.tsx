@@ -1,21 +1,18 @@
 import React from "react";
 import "./Card.css";
 
-type Props = {
+type CardProps = {
   url: string;
   id: number;
   isImageOnCard: boolean;
 };
 
-export const Card: React.FC = (props: Props) => {
-  const { url, id, isImageOnCard } = props;
-  const [isCardOpen, setIsCardOpen] = React.useState(false);
-  //   const cardClassName: string = `card ${
-  //     isCardOpen ? "card_front" : "card_back"
-  //   }`;
+export const Card: React.FC<CardProps> = ({ url, id, isImageOnCard }) => {
+  
+  const [isCardOpen, setIsCardOpen] = React.useState<boolean>(false);
+
   return (
     <div
-      //   className={cardClassName}
       className="card card_back"
       onClick={() => {
         setIsCardOpen(!isCardOpen);
