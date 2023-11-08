@@ -1,3 +1,4 @@
+import React, { useState, FC } from 'react';
 import "./App.css";
 import { Cards } from "./components/Cards/Cards";
 import { Popup } from './components/Popup/Popup';
