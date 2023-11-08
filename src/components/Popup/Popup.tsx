@@ -11,13 +11,12 @@ import { Form } from "../Form/Form";
 // }
 
 export const Popup = (props) => {
-    const {isPopupOpen, setIsPopupOpen} = props;
+    const {isPopupOpen, setIsPopupOpen, setIsImageOnCard} = props;
 
   const popupClassName = `popup ${isPopupOpen ? 'popup_open' : ''}`;
   return (
     <div className={popupClassName}>
-      <button className="popup-btnClose" onClick={() => setIsPopupOpen(false)}></button>
-      <Form isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen}/>
+      <Form isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} setIsImageOnCard={setIsImageOnCard}/>
     </div>
   );
 };

@@ -1,0 +1,16 @@
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  box-sizing: border-box;
+  margin: 10px;
+  color: chocolate;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 500;  
+}
+
+.button:hover {
+    opacity: 0.8;
+}

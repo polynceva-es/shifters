@@ -1,12 +1,14 @@
 import "./Cards.css";
+import "../Button/Button.css"
 import { Card } from "../Card/Card";
+import { Button } from "../Button/Button";
 import { array } from "../../const/array";
 type Card = {
   url: string;
   id: number;
 };
-export const Cards = (props) => {
-    const {isImageOnCard} = props;
+export const Cards: React.FC = (props) => {
+  const { isImageOnCard, setIsPopupOpen } = props;
   //элементы с 0 по N-1, где N - длина массива (arr.length) (N-1)т.к. нумерация элементов массива начинается с 0
   //из всего количества элементов выбрать рандомный номер
   //записать в промежуточную переменную последний элемент из всего количества элементов x = arr[N-1]
@@ -41,16 +43,24 @@ export const Cards = (props) => {
   const cardList: Array<Card> = randomArraySorting(array.concat(array));
 
   return (
-    <section className="cards">
-      <ul className="cards-list">
-        {cardList.map((elem, i) => {
-          return (
-            <li key={i}>
-              <Card url={elem.url} id={elem.id} isImageOnCard={isImageOnCard}/>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+    <>
+      <section className="cards">
+        <ul className="cards-list">
+          {cardList.map((elem, i) => {
+            return (
+              <li key={i}>
+                <Card
+                  url={elem.url}
+                  id={elem.id}
+                  isImageOnCard={isImageOnCard}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+      <button className="button" onClick={()=> setIsPopupOpen(true)}>Начать сначала</button>
+      {/* <Button title='Начать сначала'/> */}
+    </>
   );
 };

@@ -1,15 +1,32 @@
 .cards {
     padding: 10px;
     width: 80vw;
-    background-color: darkgray;
     border-radius: 5px;
     box-sizing: border-box;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+    overflow: auto;
+    background: linear-gradient(315deg, rgb(236, 213, 234) 3%, rgb(187, 173, 152) 38%, rgb(145, 180, 177) 68%, rgb(227, 191, 191) 98%);
+    animation: gradient 20s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
 }
 
 .cards-list {
     display: grid;
     gap: 10px;
-    /* grid-template-columns: repeat(3, minmax(min-content, max-content)); */
-    grid-template-columns: repeat(auto-fit, 50px);
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-items: center;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
 }

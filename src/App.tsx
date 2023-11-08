@@ -11,7 +11,7 @@ function App() {
     <>
       <h1 id="title">Shifters</h1>
       <Popup isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} setIsImageOnCard={setIsImageOnCard}/>
-      {!isPopupOpen ? <Cards isImageOnCard={isImageOnCard}/> : <></>}
+      {!isPopupOpen ? <Cards isImageOnCard={isImageOnCard} setIsPopupOpen={setIsPopupOpen}/> : <></>}
     </>
   );
 }
