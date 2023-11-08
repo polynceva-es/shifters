@@ -2,12 +2,12 @@ import React from "react";
 import "./Card.css";
 
 type Props = {
-  url: string,
-  id: number
+  url: string;
+  id: number;
   isImageOnCard: boolean;
 };
 
-export const Card = (props: Props) => {
+export const Card: React.FC = (props: Props) => {
   const { url, id, isImageOnCard } = props;
   const [isCardOpen, setIsCardOpen] = React.useState(false);
   //   const cardClassName: string = `card ${
@@ -26,7 +26,23 @@ export const Card = (props: Props) => {
       ) : (
         <></>
       )}
-      {isCardOpen && !isImageOnCard ? (<div className="card-num">{id}</div>) : <></>}
+      {isCardOpen && !isImageOnCard ? (
+        <article className="card-num">
+          <div className="card-num__container card-num__container_left">
+            {id}
+          </div>
+          <ul className="card-num__image-list">
+            {[...Array(id)].map((star, i) => {
+              return <li key={i} className="card-num__image-item" />;
+            })}
+          </ul>
+          <div className="card-num__container card-num__container_right">
+            {id}
+          </div>
+        </article>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
