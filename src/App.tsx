@@ -1,18 +1,18 @@
-import React, { useState, FC } from 'react';
+import React, { FC } from 'react';
+import { useSelector } from 'react-redux/es/exports';
 import "./App.css";
 import { Cards } from "./components/Cards/Cards";
 import { Popup } from './components/Popup/Popup';
 
 const App: FC = () => {
-  const [isImageOnCard, setIsImageOnCard] = useState<boolean>(false);
-  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(true);
+  const isPopupOpen: boolean = useSelector(state => state.popup.isOpen);
 
   return (
     <>
-      <h1 id="title">Shifters</h1>
-      <Popup isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} setIsImageOnCard={setIsImageOnCard}/>
-      {!isPopupOpen ? <Cards isImageOnCard={isImageOnCard} setIsPopupOpen={setIsPopupOpen}/> : <></>}
-    </>
+    <h1 id="title">Shifters</h1>
+    <Popup />
+    {!isPopupOpen ? <Cards /> : <></>}
+  </>
   );
 }
 
