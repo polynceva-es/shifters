@@ -1,24 +1,24 @@
 import React from "react";
+import {useSelector, useDispatch} from 'react-redux';
+// import { toggleIsOpen } from "../../services/redusers/cardFrontSlice";
 import "./Card.css";
 
-type Props = {
+type CardProps = {
   url: string;
   id: number;
-  isImageOnCard: boolean;
 };
 
-export const Card: React.FC = (props: Props) => {
-  const { url, id, isImageOnCard } = props;
-  const [isCardOpen, setIsCardOpen] = React.useState(false);
-  //   const cardClassName: string = `card ${
-  //     isCardOpen ? "card_front" : "card_back"
-  //   }`;
+export const Card: React.FC<CardProps> = ({ url, id }) => {
+  const isImageOnCard = useSelector(state => state.card.isImage);
+  // const isCardOpen = useSelector(state => state.card.isOpen);
+  const [isCardOpen, setIsCardOpen] = React.useState<boolean>(false);
+  // const dispatch = useDispatch();
   return (
     <div
-      //   className={cardClassName}
       className="card card_back"
       onClick={() => {
         setIsCardOpen(!isCardOpen);
+        // dispatch(toggleIsOpen(!isCardOpen))
       }}
     >
       {isCardOpen && isImageOnCard ? (
