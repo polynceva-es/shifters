@@ -24,7 +24,7 @@ const cardSlice = createSlice({
     close(state) {
       state.isOpen = false;
     },
-    visible(state, action) {
+    visible(state) {
       state.isVisible = false;
     },
   },

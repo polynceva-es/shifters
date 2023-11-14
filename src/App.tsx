@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import "./App.css";
 import { Cards } from "./components/Cards/Cards";
