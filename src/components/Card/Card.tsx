@@ -1,16 +1,15 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
-// import { toggleIsOpen } from "../../services/redusers/cardFrontSlice";
+import { RootState } from "../../services/store";
 import "./Card.css";
 
 type CardProps = {
   url: string;
-  id: number;
+  image_id: number;
 };
 
-export const Card: React.FC<CardProps> = ({ url, id }) => {
-  const isImageOnCard = useSelector(state => state.card.isImage);
-  // const isCardOpen = useSelector(state => state.card.isOpen);
+export const Card: React.FC<CardProps> = ({ url, image_id }) => {
+  const isImageOnCard = useSelector((state: RootState) => state.cardList.isImage);
   const [isCardOpen, setIsCardOpen] = React.useState<boolean>(false);
   // const dispatch = useDispatch();
   return (
@@ -18,7 +17,6 @@ export const Card: React.FC<CardProps> = ({ url, id }) => {
       className="card card_back"
       onClick={() => {
         setIsCardOpen(!isCardOpen);
-        // dispatch(toggleIsOpen(!isCardOpen))
       }}
     >
       {isCardOpen && isImageOnCard ? (
@@ -29,15 +27,15 @@ export const Card: React.FC<CardProps> = ({ url, id }) => {
       {isCardOpen && !isImageOnCard ? (
         <article className="card-num">
           <div className="card-num__container card-num__container_left">
-            {id}
+            {image_id}
           </div>
           <ul className="card-num__image-list">
-            {[...Array(id)].map((star, i) => {
+            {[...Array(image_id)].map((star, i) => {
               return <li key={i} className="card-num__image-item" />;
             })}
           </ul>
           <div className="card-num__container card-num__container_right">
-            {id}
+            {image_id}
           </div>
         </article>
       ) : (
