@@ -1,14 +1,13 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import { RootState } from '../../services/store';
 import "./Cards.css";
 import { Card } from "../Card/Card";
-import { array } from "../../const/array";
 import { CardType } from "../../const/card";
-import { randomArraySorting } from "../../const/randomArraySortFunction";
 import { openPopup } from '../../services/redusers/popupSlice';
-import { createCardFront } from '../../services/redusers/cardSlice';
+import { createCardFront, getInitialArray } from '../../services/redusers/cardListSlice';
 
 export const Cards: React.FC = () => {
-  const cardList: Array<CardType> = randomArraySorting(array.concat(array));
+  const cardList = useSelector((state: RootState) => state.cardList.cardList)
   const dispatch = useDispatch();
 
   return (
@@ -20,7 +19,7 @@ export const Cards: React.FC = () => {
               <li key={i}>
                 <Card
                   url={elem.url}
-                  id={elem.id}
+                  image_id={elem.image_id}
                 />
               </li>
             );
@@ -30,7 +29,8 @@ export const Cards: React.FC = () => {
       <button className="button" 
         onClick={()=>{
           dispatch(openPopup(true));
-          dispatch(createCardFront(undefined))
+          dispatch(createCardFront(undefined));
+          dispatch(getInitialArray())
         }}
       >Начать сначала</button>
     </>

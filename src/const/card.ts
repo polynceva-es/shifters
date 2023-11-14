@@ -1,4 +1,4 @@
 export type CardType = {
     url: string;
-    id: number;
+    image_id: number;
   };

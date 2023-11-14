@@ -1,23 +1,34 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+
+export interface cardState {
+  id: number;
+  image_id: number;
+  isOpen: boolean;
+  isVisible: boolean;
+}
+
+const initialState: cardState = {
+  id: 2, //???
+  image_id: 2, //??
+  isOpen: false, //Открыта/закрыта
+  isVisible: true, //Показывать/скрыть когда пара
+};
 
 const cardSlice = createSlice({
-  name: 'card',
-  initialState: {
-    isImage: undefined,
-    // isOpen: false
-  },
+  name: "card",
+  initialState,
   reducers: {
-    createCardFront(state, action) {
-        state.isImage = action.payload
+    open(state) {
+      state.isOpen = true;
     },
-    // toggleIsOpen(state, action) {
-    //     state.isOpen = action.payload
-    // }
-  }
+    close(state) {
+      state.isOpen = false;
+    },
+    visible(state, action) {
+      state.isVisible = false;
+    },
+  },
 });
 
-export const {
-    createCardFront, 
-    // toggleIsOpen
-} = cardSlice.actions;
+export const { open, close, visible } = cardSlice.actions;
 export default cardSlice.reducer;
