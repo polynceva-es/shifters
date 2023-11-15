@@ -5,22 +5,23 @@ import {openCard} from '../../services/redusers/cardListSlice'
 import "./Card.css";
 
 type CardProps = {
+  i: number;
   url: string;
   id: string;
   image_id: number;
 };
 
-export const Card: React.FC<CardProps> = ({ url, id, image_id }) => {
-  const [isCardOpen, setIsCardOpen] = React.useState(false);
+export const Card: React.FC<CardProps> = ({i, url, id, image_id }) => {
   const isImageOnCard = useSelector((state: RootState) => state.cardList.isImage);
+
+  const isCardOpen = useSelector((state: RootState) => state.cardList.cardList[i].isOpen);
 
   const dispatch = useDispatch();
   return (
     <div
       className="card card_back"
       onClick={() => {
-        dispatch(openCard({id}));
-        setIsCardOpen(!isCardOpen);
+        dispatch(openCard({i}));
       }}
     >
       {isCardOpen && isImageOnCard ? (
@@ -34,7 +35,7 @@ export const Card: React.FC<CardProps> = ({ url, id, image_id }) => {
             {image_id}
           </div>
           <ul className="card-num__image-list">
-            {[...Array(image_id)].map((image_id, i) => {
+            {[...Array(image_id)].map((__, i) => {
               return <li key={i} className="card-num__image-item" />;
             })}
           </ul>
