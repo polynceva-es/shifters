@@ -7,11 +7,10 @@ import "./Card.css";
 type CardProps = {
   i: number;
   url: string;
-  id: string;
   image_id: number;
 };
 
-export const Card: React.FC<CardProps> = ({i, url, id, image_id }) => {
+export const Card: React.FC<CardProps> = ({i, url, image_id }) => {
   const isImageOnCard = useSelector((state: RootState) => state.cardList.isImage);
 
   const isCardOpen = useSelector((state: RootState) => state.cardList.cardList[i].isOpen);

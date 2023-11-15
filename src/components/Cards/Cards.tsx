@@ -20,7 +20,6 @@ export const Cards: React.FC = () => {
                 <Card
                   i={i}
                   url={elem.url}
-                  id={elem.id}
                   image_id={elem.image_id}
                 />
               </li>
