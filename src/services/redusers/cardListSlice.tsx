@@ -55,24 +55,27 @@ const cardListSlice = createSlice({
       state.cardList = returnInitialArray(array);
     },
     openCard(state, action) {
-      state.cardList.map((elem)=> {
-        if(elem.id === action.payload.id) {
-          elem.isOpen = true;
-          result.push({id: elem.id, image_id: elem.image_id})
-        } else {
-          return elem
-        }
-      });
+      const i = action.payload.i;
+      // state.cardList.map((elem)=> {
+      //   if(elem.id === action.payload.id) {
+      //     elem.isOpen = true;
+      //     result.push({id: elem.id, image_id: elem.image_id})
+      //   } else {
+      //     return elem
+      //   }
+      // });
+      state.cardList[i].isOpen = true;
+      result.push({id: state.cardList[i].id, image_id: state.cardList[i].image_id})
       console.log(result)
       if(result[0] && result[1]) {
         if(result[0].image_id === result[1].image_id){
           console.log('угадал!!!');
           result=[]
-          //map по массиву и isVisible: true, isOpen: false у двух карточек
+          //isVisible: true, isOpen: false у двух карточек
         } else {
           console.log('не угадал :(');
           result=[]
-          //map по массиву и isOpen: false у двух карточек
+          //isOpen: false у двух карточек
         }
       }
       
