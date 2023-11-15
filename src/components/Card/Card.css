@@ -10,6 +10,10 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);   
 }
 
+.card_hidden {
+    visibility: hidden;
+}
+
 .card_back {
     background-image: url('../../image/background-image.jpg');
 }
