@@ -19,6 +19,7 @@ export const Cards: React.FC = () => {
               <li key={i}>
                 <Card
                   url={elem.url}
+                  id={elem.id}
                   image_id={elem.image_id}
                 />
               </li>
