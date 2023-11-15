@@ -70,22 +70,24 @@ const cardListSlice = createSlice({
       if(result[0] && result[1]) {
         if(result[0].image_id === result[1].image_id){
           console.log('угадал!!!');
-          result=[]
-          //isVisible: true, isOpen: false у двух карточек
+          state.cardList.map((elem) => {
+            if(elem.id === result[0].id || elem.id === result[1].id) {
+              elem.isOpen = false;
+              elem.isVisible = true;
+            }
+          })
+          result=[];
         } else {
           console.log('не угадал :(');
-          result=[]
-          //isOpen: false у двух карточек
+          state.cardList.map((elem) => {
+            if(elem.id === result[0].id || elem.id === result[1].id) {
+              elem.isOpen = false;
+            }
+          });
+          result=[];
         }
       }
-      
     },
-    // closeCards(state, action) {
-
-    // },
-    // visibleCards(state, action) {
-
-    // }
   },
 });
 
