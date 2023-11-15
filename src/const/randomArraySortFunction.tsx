@@ -1,4 +1,3 @@
-import { CardType } from "./card";
   //элементы с 0 по N-1, где N - длина массива (arr.length) (N-1)т.к. нумерация элементов массива начинается с 0
   //из всего количества элементов выбрать рандомный номер
   //записать в промежуточную переменную последний элемент из всего количества элементов x = arr[N-1]
@@ -16,8 +15,8 @@ import { CardType } from "./card";
   //записать в промежуточную переменную последний элемент из всего количества элементов x = arr[N-1-i]
   //записать в последний элемент элемент рандомного номера arr[N-1-i] = arr[randomNumber]
   //записать в элемент рандомного номера последний элемент из промежуточной переменной arr[randomNumber] = x
-  export function randomArraySorting(arr: Array<CardType>) {
-    let x: CardType;
+  export function randomArraySorting<Type>(arr: Type[]): Type[] {
+    let x: Type;
     for (let i: number = 0; i < arr.length; i++) {
       const numberRandomElement: number = Math.floor(
         Math.random() * (arr.length - i)
