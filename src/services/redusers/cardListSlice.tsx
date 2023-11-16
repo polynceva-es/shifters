@@ -64,8 +64,12 @@ const cardListSlice = createSlice({
       if(result[0] && result[1]) {
         if(result[0].id === result[1].id) {
           console.log('выбрана одна и таже карточка');
-          //ПРОБЛЕМА: добавляет в массив result много раз
-
+          state.cardList.map((elem) => {
+            if(elem.id === result[0].id) {
+                elem.isOpen = false;
+            } return elem;
+          })  
+          result= [];
         } else if(result[0].image_id === result[1].image_id){
           console.log('угадал!!!');
           state.cardList.map((elem) => {
