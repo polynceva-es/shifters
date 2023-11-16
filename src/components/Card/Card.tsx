@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = ({i, url, image_id }) => {
   const isCardVisibility = useSelector((state: RootState) => state.cardList.cardList[i].isVisible);
 
   const cardClassName = `card card_back ${isCardVisibility ? 'card_hidden' : ''}`
-
+  const imageClassName = `card-image ${isCardOpen ? 'card-image_open': ''}`
   const dispatch = useDispatch();
   return (
     <div
@@ -28,8 +28,8 @@ export const Card: React.FC<CardProps> = ({i, url, image_id }) => {
         setTimeout(() => {dispatch(closeCard())}, 2000);
       }}
     >
-      {isCardOpen && isImageOnCard ? (
-        <img src={url} alt="photo" className="card-image" />
+      {isImageOnCard ? (
+        <img src={url} alt="photo" className={imageClassName} />
       ) : (
         <></>
       )}
