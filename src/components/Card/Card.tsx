@@ -1,7 +1,8 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import { RootState } from "../../services/store";
-import {openCard} from '../../services/redusers/cardListSlice'
+import {openCard, closeCard} from '../../services/redusers/cardListSlice';
+
 import "./Card.css";
 
 type CardProps = {
@@ -17,17 +18,18 @@ export const Card: React.FC<CardProps> = ({i, url, image_id }) => {
   const isCardVisibility = useSelector((state: RootState) => state.cardList.cardList[i].isVisible);
 
   const cardClassName = `card card_back ${isCardVisibility ? 'card_hidden' : ''}`
-
+  const imageClassName = `card-image ${isCardOpen ? 'card-image_open': ''}`
   const dispatch = useDispatch();
   return (
     <div
       className={cardClassName}
       onClick={() => {
         dispatch(openCard({i}));
+        setTimeout(() => {dispatch(closeCard())}, 2000);
       }}
     >
-      {isCardOpen && isImageOnCard ? (
-        <img src={url} alt="photo" className="card-image" />
+      {isImageOnCard ? (
+        <img src={url} alt="photo" className={imageClassName} />
       ) : (
         <></>
       )}

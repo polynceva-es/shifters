@@ -34,6 +34,11 @@
 }
 .card-image {
     object-fit: cover;
+    visibility: hidden;
+}
+
+.card-image_open {
+    visibility: visible;
 }
 
 .card-num {
