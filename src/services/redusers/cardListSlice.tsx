@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { array } from "../../const/array";
 import { CardElement, CardType } from "../../const/card";
 import { randomArraySorting } from "../../const/randomArraySortFunction";
