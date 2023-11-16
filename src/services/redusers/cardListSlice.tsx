@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { array } from "../../const/array";
 import { CardElement, CardType } from "../../const/card";
 import { randomArraySorting } from "../../const/randomArraySortFunction";
@@ -7,7 +7,7 @@ type Array = CardElement[];
 type InitArray = CardType[];
 type Result = {id: string, image_id: number}[];
 
-export interface cardListState {
+interface cardListState {
   isImage: undefined | boolean;
   cardList: InitArray
 }
@@ -56,25 +56,23 @@ const cardListSlice = createSlice({
     },
     openCard(state, action) {
       const i = action.payload.i;
-      // state.cardList.map((elem)=> {
-      //   if(elem.id === action.payload.id) {
-      //     elem.isOpen = true;
-      //     result.push({id: elem.id, image_id: elem.image_id})
-      //   } else {
-      //     return elem
-      //   }
-      // });
       state.cardList[i].isOpen = true;
       result.push({id: state.cardList[i].id, image_id: state.cardList[i].image_id})
       console.log(result)
+    },
+    closeCard(state) {
       if(result[0] && result[1]) {
-        if(result[0].image_id === result[1].image_id){
+        if(result[0].id === result[1].id) {
+          console.log('выбрана одна и таже карточка');
+          //ПРОБЛЕМА: добавляет в массив result много раз
+
+        } else if(result[0].image_id === result[1].image_id){
           console.log('угадал!!!');
           state.cardList.map((elem) => {
             if(elem.id === result[0].id || elem.id === result[1].id) {
-              elem.isOpen = false;
-              elem.isVisible = true;
-            }
+                elem.isOpen = false;
+                elem.isVisible = true;
+            } return elem;
           })
           result=[];
         } else {
@@ -82,14 +80,14 @@ const cardListSlice = createSlice({
           state.cardList.map((elem) => {
             if(elem.id === result[0].id || elem.id === result[1].id) {
               elem.isOpen = false;
-            }
+            } return elem;
           });
           result=[];
         }
       }
-    },
+    }
   },
 });
 
-export const { createCardFront, getInitialArray, openCard } = cardListSlice.actions;
+export const { createCardFront, getInitialArray, openCard, closeCard } = cardListSlice.actions;
 export default cardListSlice.reducer;

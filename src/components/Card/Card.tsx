@@ -1,16 +1,18 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import { RootState } from "../../services/store";
-import {openCard} from '../../services/redusers/cardListSlice'
+import {openCard, closeCard} from '../../services/redusers/cardListSlice';
+
 import "./Card.css";
 
 type CardProps = {
   i: number;
+  id: string;
   url: string;
   image_id: number;
 };
 
-export const Card: React.FC<CardProps> = ({i, url, image_id }) => {
+export const Card: React.FC<CardProps> = ({i, id, url, image_id }) => {
   const isImageOnCard = useSelector((state: RootState) => state.cardList.isImage);
 
   const isCardOpen = useSelector((state: RootState) => state.cardList.cardList[i].isOpen);
@@ -24,6 +26,7 @@ export const Card: React.FC<CardProps> = ({i, url, image_id }) => {
       className={cardClassName}
       onClick={() => {
         dispatch(openCard({i}));
+        setTimeout(() => {dispatch(closeCard())}, 2000);
       }}
     >
       {isCardOpen && isImageOnCard ? (
