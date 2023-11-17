@@ -9,19 +9,3 @@
 .popup_open {
     display: flex;
 }
-
-.popup-btnClose {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    border: 1px solid black;
-    width: 10px;
-    height: 10px;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.popup-btnClose:hover {
-    opacity: 0.8;
-}

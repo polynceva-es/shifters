@@ -30,37 +30,37 @@ export const Popup: React.FC = () => {
 
   return (
     <div className={popupClassName}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <fieldset className="form">
-          <legend className="form">Какие карточки показывать?</legend>
-          <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="form">
+        <fieldset className="form__fieldset">
+          <legend className="form__legend">Какие карточки показывать?</legend>
+          <div className="form__conteiner form__conteiner_image">
             <input
               type="radio"
               id="image"
               value="image"
-              className="form"
+              className="form__input"
               required
               {...register("type")}
             />
-            <label htmlFor="image" className="form">
+            <label htmlFor="image" className="form__label">
               картинки
             </label>
           </div>
-          <div>
+          <div className="form__conteiner form__conteiner_number">
             <input
               type="radio"
               id="number"
               value="number"
-              className="form"
+              className="form__input"
               {...register("type")}
             />
-            <label htmlFor="number" className="form">
+            <label htmlFor="number" className="form__label">
               цифры
             </label>
           </div>
         </fieldset>
-        <button className="button" type="submit">
-          Показать карточки
+        <button className="button" type="submit" content="&nbsp;Показать&nbsp;карточки">
+          &nbsp;Показать&nbsp;карточки&nbsp;
         </button>
       </form>
     </div>

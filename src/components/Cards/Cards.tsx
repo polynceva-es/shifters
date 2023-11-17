@@ -27,13 +27,14 @@ export const Cards: React.FC = () => {
           })}
         </ul>
       </section>
-      <button className="button" 
+      <button className="button"
+        content='&nbsp;Начать&nbsp;сначала' 
         onClick={()=>{
           dispatch(openPopup(true));
           dispatch(createCardFront(undefined));
           dispatch(getInitialArray())
         }}
-      >Начать сначала</button>
+      >&nbsp;Начать&nbsp;сначала&nbsp;</button>
     </>
   );
 };
