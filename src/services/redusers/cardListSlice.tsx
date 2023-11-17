@@ -56,9 +56,11 @@ const cardListSlice = createSlice({
     },
     openCard(state, action) {
       const i = action.payload.i;
-      state.cardList[i].isOpen = true;
-      result.push({id: state.cardList[i].id, image_id: state.cardList[i].image_id})
-      console.log(result)
+      if(result.length < 2) {
+        state.cardList[i].isOpen = true;
+        result.push({id: state.cardList[i].id, image_id: state.cardList[i].image_id})
+      } else {return}
+      // console.log(result)
     },
     closeCard(state) {
       if(result[0] && result[1]) {
