@@ -20,6 +20,7 @@ export const Popup: React.FC = () => {
   const { register, handleSubmit } = useForm<FormValue>({ mode: "onChange" });
 
   const onSubmit = (data: FormValue) => {
+    // console.log(data);
     if (data.type === "image") {
       dispatch(createCardFront(true));
     } else {
@@ -30,17 +31,22 @@ export const Popup: React.FC = () => {
 
   return (
     <div className={popupClassName}>
-      <form onSubmit={handleSubmit(onSubmit)} className="form">
+      <form 
+        onSubmit={handleSubmit(onSubmit)} 
+        className="form">
         <fieldset className="form__fieldset">
           <legend className="form__legend">Какие карточки показывать?</legend>
           <div className="form__conteiner form__conteiner_image">
             <input
               type="radio"
+              // type="submit"
               id="image"
               value="image"
               className="form__input"
+              checked
               required
               {...register("type")}
+              // onChange={onSubmit}
             />
             <label htmlFor="image" className="form__label">
               картинки
@@ -49,10 +55,12 @@ export const Popup: React.FC = () => {
           <div className="form__conteiner form__conteiner_number">
             <input
               type="radio"
+              // type="submit"
               id="number"
               value="number"
               className="form__input"
               {...register("type")}
+              // onChange={onSubmit}
             />
             <label htmlFor="number" className="form__label">
               цифры
