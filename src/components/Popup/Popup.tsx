@@ -20,7 +20,7 @@ export const Popup: React.FC = () => {
   const { register, handleSubmit } = useForm<FormValue>({ mode: "onChange" });
 
   const onSubmit = (data: FormValue) => {
-    // console.log(data);
+    console.log(data.type);
     if (data.type === "image") {
       dispatch(createCardFront(true));
     } else {
@@ -39,12 +39,11 @@ export const Popup: React.FC = () => {
           <div className="form__conteiner form__conteiner_image">
             <input
               type="radio"
-              // type="submit"
               id="image"
               value="image"
               className="form__input"
-              checked
               required
+              defaultChecked
               {...register("type")}
               // onChange={onSubmit}
             />
@@ -55,7 +54,6 @@ export const Popup: React.FC = () => {
           <div className="form__conteiner form__conteiner_number">
             <input
               type="radio"
-              // type="submit"
               id="number"
               value="number"
               className="form__input"
