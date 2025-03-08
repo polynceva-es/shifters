@@ -10,6 +10,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: 'Mochiy Pop One', sans-serif;
+  --dark-blue: #194F82;
+  --yellow: #FFC10D;
+  --blue: #56ACE0;
+  --white: #FFFFFF;
 }
 
 h1,

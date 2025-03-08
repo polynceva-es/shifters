@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import popupReduser from '../services/redusers/popupSlice';
 import cardListReduser from './redusers/cardListSlice';
+import playSlice from "./redusers/playSlice";
 
 export const store = configureStore({
     reducer: {
         popup: popupReduser,
-        cardList: cardListReduser
+        cardList: cardListReduser,
+        play: playSlice
     }
 });
 
