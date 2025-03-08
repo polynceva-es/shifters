@@ -1,0 +1,10 @@
+.playList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 10px;
+    border: 4px solid var(--dark-blue);
+}
+
+.playList li {
+    list-style-type: none;
+}

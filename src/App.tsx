@@ -1,23 +1,18 @@
-import { FC } from "react";
-import { useSelector } from "react-redux";
 import "./App.css";
-import { Cards } from "./components/Cards/Cards";
-import { Popup } from "./components/Popup/Popup";
-import { RootState } from "./services/store";
+import { FC } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Home } from "./pages/home/Home";
+import { TicTacToe } from "./pages/ticTacToe/TicTacToe";
+import { Shifters } from "./pages/shifters/Shifters";
 
 const App: FC = () => {
-  const isPopupOpen = useSelector((state: RootState) => state.popup.isOpen);
-
   return (
     <>
-      <h1 id="title">Shifters</h1>
-      <Popup />
-      {!isPopupOpen ? <Cards /> : <></>}
-      <footer>
-        <a href="https://github.com/polynceva-es/" target="_blanck">
-          development by Ekaterina Polyntseva
-        </a>
-      </footer>
+      <Routes>
+        <Route path="/shifters" element={<Home />} />
+        <Route path="/shifters/shifters" element={<Shifters />} />
+        <Route path="/shifters/tic-tac-toe" element={<TicTacToe />} />
+      </Routes>
     </>
   );
 };
