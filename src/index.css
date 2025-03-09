@@ -43,9 +43,13 @@ li {
 
 footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 20px;
   font-size: 14px;
-  margin: 20px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
 }
 
 footer a {
