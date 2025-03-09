@@ -12,7 +12,7 @@ type PlayItemProps = {
 export const PlayItem: FC<PlayItemProps> = ({ number }) => {
 
   const dispatch = useDispatch();
-  const isClicked = useSelector((state: RootState) => state.play.play.find(el => el.id === number).isClicked); //
+  const isClicked = useSelector((state: RootState) => state.play.play.find(el => el.id === number)!.isClicked);
   const move = useSelector((state: RootState) => state.play.move);
 
   const handleClick = (num: number) => {
@@ -23,7 +23,6 @@ export const PlayItem: FC<PlayItemProps> = ({ number }) => {
 
   return (
     <div className={playItemClassName(isClicked)} onClick={()=>handleClick(number)}>
-      {/* {number} */}
     </div>
   );
 };

@@ -1,32 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {EMPTY, CROSS, ZERO, numbers} from "../../const/const";
+import { numbers } from "../../const/const";
 
-interface playItem {
-  id: number,
-  isClicked: string
+export enum ClickedType {
+  EMPTY = 'empty',
+  CROSS = 'cross',
+  ZERO = 'zero',
 }
 
-type initPlayList = playItem[]
+interface playItem {
+  id: number;
+  isClicked: ClickedType;
+}
+
+type initPlayList = playItem[];
 
 interface playListState {
-  play: initPlayList,
-  move: string,
-  isLoading: boolean,
-  error: string
+  play: initPlayList;
+  move: string;
+  isLoading: boolean;
+  error: string;
 }
 
 const initialPlay: initPlayList = numbers.map((num: number) => {
   return {
     id: num,
-    isClicked: EMPTY,
-  }
-})
+    isClicked: ClickedType.EMPTY,
+  };
+});
 
 const initialState: playListState = {
   play: initialPlay,
-  move: CROSS, //CROSS || ZERO
+  move: ClickedType.CROSS, //CROSS || ZERO
   isLoading: true || false,
-  error: ''
+  error: "",
 };
 
 const playSlice = createSlice({
@@ -34,24 +40,24 @@ const playSlice = createSlice({
   initialState,
   reducers: {
     handleClicked: (state, action) => {
-      state.play.find((el) => el.id === action.payload.num).isClicked = action.payload.move;   
+      state.play.find((el) => el.id === action.payload.num)!.isClicked =
+        action.payload.move;
     },
     handleMove: (state, action) => {
-      if(action.payload === CROSS) {
-        state.move = ZERO
+      if (action.payload === ClickedType.CROSS) {
+        state.move = ClickedType.ZERO;
       } else {
-        state.move = CROSS
+        state.move = ClickedType.CROSS;
       }
     },
     handleStartAgain: (state) => {
       state.play = initialPlay;
-      state.move = CROSS;
+      state.move = ClickedType.CROSS;
     },
-    handleWin: () => {
-
-    }
+    handleWin: () => {},
   },
 });
 
-export const {handleClicked, handleMove, handleStartAgain, handleWin} = playSlice.actions;
+export const { handleClicked, handleMove, handleStartAgain, handleWin } =
+  playSlice.actions;
 export default playSlice.reducer;
