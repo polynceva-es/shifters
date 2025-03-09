@@ -16,6 +16,14 @@ body {
   --white: #FFFFFF;
 }
 
+a {
+  color: var(--dark-blue);
+}
+
+a:hover {
+  color: var(--blue);
+}
+
 h1,
 ul {
   margin: 0;
