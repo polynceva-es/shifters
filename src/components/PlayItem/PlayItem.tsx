@@ -1,6 +1,6 @@
 import "./PlayItem.css";
 import { useDispatch, useSelector } from "react-redux";
-import {handleClicked, handleMove} from "../../services/redusers/playSlice"
+import {handleClicked, handleWin} from "../../services/redusers/playSlice"
 import { playItemClassName } from "../../const/playItemClassName";
 import { RootState } from "../../services/store";
 import { FC } from "react";
@@ -17,12 +17,13 @@ export const PlayItem: FC<PlayItemProps> = ({ number }) => {
 
   const handleClick = (num: number) => {
     dispatch(handleClicked({num, move}));
-    dispatch(handleMove(move));
     playItemClassName(isClicked);
+    dispatch(handleWin());
   };
 
   return (
     <div className={playItemClassName(isClicked)} onClick={()=>handleClick(number)}>
+      {number}
     </div>
   );
 };
