@@ -10,9 +10,9 @@ const App: FC = () => {
   return (
     <>
       <Routes>
-        <Route path="/shifters/" element={<Home />} />
-        <Route path="/shifters/shifters" element={<Shifters />} />
-        <Route path="/shifters/tic-tac-toe" element={<TicTacToe />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/shifters" element={<Shifters />} />
+        <Route path="/tic-tac-toe" element={<TicTacToe />} />
       </Routes>
       <Footer/>
     </>
