@@ -23,7 +23,7 @@ export const PlayItem: FC<PlayItemProps> = ({ number }) => {
 
   return (
     <div className={playItemClassName(isClicked)} onClick={()=>handleClick(number)}>
-      {number}
+      {/* {number} */}
     </div>
   );
 };
